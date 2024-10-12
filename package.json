@@ -5,7 +5,7 @@
   "version": "1.0.0-beta.15",
   "author": "Kevin Scott",
   "license": "MIT",
-  "homepage": "https://github.com/thekevinscott/UpscalerJS",
+  "homepage": "https://github.com/gosunny2050/UpscalerJS",
   "scripts": {
     "build": "wireit",
     "build:models": "wireit",
