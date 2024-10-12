@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upscale Images</title>
+  <script src="https://cdn.jsdelivr.net/npm/upscaler@latest"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+    img {
+      max-width: 100%;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Upscale Your Image</h1>
+  <input type="file" id="image-upload" />
+  <div id="result">
+    <h3>Original Image</h3>
+    <img id="original-img" alt="Original Image" />
+    <h3>Upscaled Image</h3>
+    <img id="upscaled-img" alt="Upscaled Image" />
+  </div>
+
+  <script>
+    // Initialize the Upscaler with a model
+    const upscaler = new window.Upscaler({
+      model: 'esrgan-small' // Using ESRGAN model for upscaling
+    });
+
+    document.getElementById('image-upload').addEventListener('change', async function(event) {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = async function(e) {
+          const img = document.createElement('img');
+          img.src = e.target.result;
+          img.onload = async function() {
+            // Display original image
+            document.getElementById('original-img').src = img.src;
+
+            // Upscale the image
+            const upscaledImg = await upscaler.upscale(img);
+
+            // Display upscaled image
+            document.getElementById('upscaled-img').src = upscaledImg.toDataURL();
+          };
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  </script>
+</body>
+</html>
+
