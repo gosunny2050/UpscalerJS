@@ -1,5 +1,5 @@
-import * as tf from "@tensorflow/tfjs";
-//import * as tf from 'https://cdn.jsdelivr.net/npm/@tensorflow/tfjs';
+//import * as tf from "@tensorflow/tfjs";
+import * as tf from 'https://cdn.jsdelivr.net/npm/@tensorflow/tfjs';
 import Upscaler from "upscaler";
 const table = document.getElementById("table");
 const original = document.getElementById("original");
